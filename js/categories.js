@@ -93,6 +93,9 @@ document.addEventListener("DOMContentLoaded", function(e){
             currentCategoriesArray = resultObj.data
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
+            let username = sessionStorage.getItem('name');
+
+            document.getElementById('username').innerHTML = username;
         }
     });
 

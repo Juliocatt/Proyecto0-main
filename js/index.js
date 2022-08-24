@@ -23,8 +23,14 @@ function comprobrar(){
     if( user  === undefined){
         
        window.location = "login.html"
-    }
+    } else {
 
+        let username = sessionStorage.getItem('name');
+
+        document.getElementById('username').innerHTML = username;
+
+    }
+    
 }
 
 document.getElementById('salir').addEventListener("click", ()=>{
@@ -33,3 +39,4 @@ document.getElementById('salir').addEventListener("click", ()=>{
 
   comprobrar()
 })
+

@@ -27,8 +27,8 @@ if (usuario === "" || password === ""){
       })
 } else{
     
-    sessionStorage.name = usuario
-
+    sessionStorage.setItem('name', usuario)
+    
     window.location.href = "index.html"
 };}
 
