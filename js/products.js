@@ -1,28 +1,28 @@
 let productos = [];
 let links = PRODUCTS_URL + localStorage.getItem('catID') + EXT_TYPE;
-const ORDER_ASC_BY_NAME = "AZ";
-const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_BY_PROD_COUNT = "Cant.";
-let currentSortCriteria = undefined;
+const ordenAscNombre = "AZ";
+const ordenDesNombre = "ZA";
+const ordenVendidos = "Cant.";
+let criterioOrdenar = undefined;
 let minCost = undefined;
 let maxCost = undefined;
 
 function ordenarProductos(criteria, array){
     let result = [];
-    if (criteria === ORDER_ASC_BY_NAME)
+    if (criteria === ordenAscNombre)
     {
         result = array.sort(function(a, b) {
             if ( a.name < b.name ){ return -1; }
             if ( a.name > b.name ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_DESC_BY_NAME){
+    }else if (criteria === ordenDesNombre){
         result = array.sort(function(a, b) {
             if ( a.name > b.name ){ return -1; }
             if ( a.name < b.name ){ return 1; }
             return 0;
         });
-    }else if (criteria === ORDER_BY_PROD_COUNT){
+    }else if (criteria === ordenVendidos){
         result = array.sort(function(a, b) {
             let aCount = parseInt(a.soldCount);
             let bCount = parseInt(b.soldCount);
@@ -37,18 +37,18 @@ function ordenarProductos(criteria, array){
 }
 
 function ordenaryMostrar(sortCriteria, products){
-    currentSortCriteria = sortCriteria;
+    criterioOrdenar = sortCriteria;
 
     if(productos != undefined){
         currentCategoriesArray = products;
     }
 
-    productos = ordenarProductos(currentSortCriteria, productos);
+    productos = ordenarProductos(criterioOrdenar, productos);
 
     mostrarDatos(productos);
 }
 
-function mostrarDatos(){
+function mostrarDatos(productos){
 
     
 
@@ -93,20 +93,20 @@ function mostrarDatos(){
              }
          })
          document.getElementById("arregloas").addEventListener("click", ()=>{
-            ordenaryMostrar(ORDER_ASC_BY_NAME); 
+            ordenaryMostrar(ordenAscNombre); 
         });
         document.getElementById("arreglodes").addEventListener("click", ()=>{
-            ordenaryMostrar(ORDER_DESC_BY_NAME);
+            ordenaryMostrar(ordenDesNombre);
         });
         document.getElementById("ordenprecio").addEventListener("click", ()=>{
-            ordenaryMostrar(ORDER_BY_PROD_COUNT);
+            ordenaryMostrar(ordenVendidos);
         });
         document.getElementById("limpiarfiltro").addEventListener("click", ()=>{
             document.getElementById("rangodepreciomin").value = "";
             document.getElementById("rangodepreciomax").value = "";
     
-            minCount = undefined;
-            maxCount = undefined;
+            minCost = undefined;
+            maxCost = undefined;
     
             mostrarDatos();
         });
@@ -131,4 +131,27 @@ function mostrarDatos(){
 
             mostrarDatos();
         });
-    });
+
+        document.getElementById('buscador').addEventListener('keyup', ()=>{
+
+            buscar(productos);
+           
+        })
+       
+      });
+
+      
+
+      function buscar(productos){
+        
+        let busqueda = document.getElementById('buscador').value;
+       
+        let filtrado = productos.filter(producto => {
+        return producto.name.toLowerCase().indexOf(busqueda.toLowerCase()) > -1;
+
+       })
+       
+       mostrarDatos(filtrado);
+    }   
+
+    

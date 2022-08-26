@@ -228,3 +228,8 @@ text-align: center;
   color: red;
   background-color:rgba(0, 0, 0, 0.5)
 }
+
+#buscador{
+  border-radius: 10px;
+  width: 40%;
+}

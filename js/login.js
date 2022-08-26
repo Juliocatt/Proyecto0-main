@@ -1,13 +1,3 @@
-Swal.fire({
-    title: 'Por favor, inicie sesión para continuar.',
-    showClass: {
-      popup: 'animate__animated animate__fadeInDown'
-    },
-    hideClass: {
-      popup: 'animate__animated animate__fadeOutUp'
-    }
-  })
-
 function enviar(){
 
 let usuario = document.getElementById('usuario').value

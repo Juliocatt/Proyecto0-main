@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
    comprobrar()
 
+   mostrarUsuario()
+
 });
 
 function comprobrar(){
@@ -22,14 +24,18 @@ function comprobrar(){
 
     if( user  === undefined){
         
-       window.location = "login.html"
-    } else {
-
-        let username = sessionStorage.getItem('name');
-
-        document.getElementById('username').innerHTML = username;
-
-    }
+        Swal.fire({
+            title: 'Usted no ha iniciado sesión',
+            text: "Por favor, iniciar sesión para continuar",
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Iniciar sesión.'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location = "login.html"
+            }
+          })
+    };
     
 }
 
@@ -38,5 +44,11 @@ document.getElementById('salir').addEventListener("click", ()=>{
   sessionStorage.clear()
 
   comprobrar()
-})
+});
 
+function mostrarUsuario(){
+
+    let username = sessionStorage.getItem('name');
+
+    document.getElementById('username').innerHTML = username;
+};
