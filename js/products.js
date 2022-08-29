@@ -48,9 +48,7 @@ function ordenaryMostrar(sortCriteria, products){
     mostrarDatos(productos);
 }
 
-function mostrarDatos(productos){
-
-    
+function mostrarDatos(array){
 
     let htmlContentToAppend = "";
 
@@ -142,7 +140,7 @@ function mostrarDatos(productos){
 
       
 
-      function buscar(productos){
+      function buscar(productos){   
         
         let busqueda = document.getElementById('buscador').value;
        
