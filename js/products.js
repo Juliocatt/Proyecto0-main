@@ -50,10 +50,12 @@ function ordenaryMostrar(sortCriteria, products){
 
 function mostrarDatos(array){
 
+
+
     let htmlContentToAppend = "";
 
-    for(let i = 0; i < productos.length; i++){
-        let products = productos[i];
+    for(let i = 0; i < array.length; i++){
+        let products = array[i];
         if (((minCost == undefined) || (minCost != undefined && parseInt(products.cost) >= minCost)) &&
     ((maxCost == undefined) || (maxCost != undefined && parseInt(products.cost) <= maxCost))){
 
@@ -106,7 +108,7 @@ function mostrarDatos(array){
             minCost = undefined;
             maxCost = undefined;
     
-            mostrarDatos();
+            mostrarDatos(productos);
         });
         document.getElementById("filtrar").addEventListener("click", ()=>{
             
@@ -127,7 +129,7 @@ function mostrarDatos(array){
                 maxCost = undefined;
             }
 
-            mostrarDatos();
+            mostrarDatos(productos);
         });
 
         document.getElementById('buscador').addEventListener('keyup', ()=>{
