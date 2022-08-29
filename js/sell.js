@@ -53,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         updateTotalCosts();
     });
 
+    mostrarUsuario();
+
     document.getElementById("productCurrency").addEventListener("change", function(){
         if (this.value == DOLLAR_CURRENCY)
         {
@@ -147,3 +149,10 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+function mostrarUsuario(){
+
+    let username = sessionStorage.getItem('name');
+
+    document.getElementById('username').innerHTML = username;
+};
