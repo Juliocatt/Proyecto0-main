@@ -53,7 +53,7 @@ function mostrarDatos(array){
     ((maxCost == undefined) || (maxCost != undefined && parseInt(products.cost) <= maxCost))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${products.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setID(${products.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${products.image}" alt="" class="img-thumbnail">
@@ -73,6 +73,10 @@ function mostrarDatos(array){
     }
 };
 
+function setID(id) {
+    localStorage.setItem("ID", id);
+    window.location = "product-info.html"
+}
 
       document.addEventListener("DOMContentLoaded", ()=> {
          getJSONData(links).then(function(resultObj){
@@ -102,7 +106,12 @@ function mostrarDatos(array){
             maxCost = undefined;
     
             mostrarDatos(productos);
+            
         });
+
+        comprobrar();
+
+
         document.getElementById("filtrar").addEventListener("click", ()=>{
             
             minCost = document.getElementById("rangodepreciomin").value;

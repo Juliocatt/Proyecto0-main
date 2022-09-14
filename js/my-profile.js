@@ -1,5 +1,6 @@
 addEventListener('DOMContentLoaded', ()=>{
     mostrarUsuario()
+    comprobrar();
 })
 
 function mostrarUsuario(){

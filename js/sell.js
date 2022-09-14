@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     mostrarUsuario();
+    comprobrar();
 
     document.getElementById("productCurrency").addEventListener("change", function(){
         if (this.value == DOLLAR_CURRENCY)

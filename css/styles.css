@@ -233,3 +233,25 @@ text-align: center;
   border-radius: 10px;
   width: 40%;
 }
+
+.size{
+  width: 700px;
+  padding: 1%;
+  margin-top: 8%;
+  border: 1px solid rgb(187, 187, 187);
+}
+
+.info{
+  margin-top: 40px;
+}
+
+.coments{
+  border: 1px solid rgb(187, 187, 187);
+  padding: 10px;
+}
+  
+.amarelo{
+  color: yellow;
+}
+
+

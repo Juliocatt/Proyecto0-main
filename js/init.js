@@ -6,7 +6,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
-const autos = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+
 
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -39,4 +39,25 @@ let getJSONData = function(url){
         hideSpinner();
         return result;
     });
+}
+
+function comprobrar(){
+
+  let usuario = sessionStorage.name
+
+  if( usuario  === undefined){
+      
+      Swal.fire({
+          title: 'Usted no ha iniciado sesión',
+          text: "Por favor, iniciar sesión para continuar",
+          icon: 'warning',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'Iniciar sesión.'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location = "login.html"
+          }
+        })
+  };
+  
 }
