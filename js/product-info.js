@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if (resultObj.status === "ok"){
            info = resultObj.data;
           mostrarInfo(info);
+          mostrarRelacionados(info);
         }
     })
     getJSONData(comentarios).then((resultObj) =>{
@@ -22,15 +23,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     comprobrar();
     mostrarUsuario();
+    
    
 })
-
-function mostrarUsuario(){
-
-    let username = sessionStorage.getItem('name');
-
-    document.getElementById('username').innerHTML = username;
-}
 
 function mostrarInfo(info){
 let contenido = "";
@@ -104,6 +99,27 @@ comentarios += `
 document.getElementById('comentarios').innerHTML += comentarios;
 }
 
+function mostrarRelacionados(info){
+let contenido = "";
+for (let i = 0; i < info.relatedProducts.length; i++){
+relacionados = info.relatedProducts[i];
+
+contenido += `
+
+  <div class="d-flex">
+    <div class="card" onclick="setID(${relacionados.id})">
+      <img src="${relacionados.image}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${relacionados.name}</h5>
+      </div>
+    </div>
+
+
+`
+}
+document.getElementById('relacionados').innerHTML += contenido;
+}
+
 function puntaje(puntos){
     
 var estrellas = '';
@@ -123,7 +139,7 @@ let nuevoComentario = new Object();
 
 const dateTime = new Date();
 const year = dateTime.getFullYear();
-const month = dateTime.getMonth();
+const month = dateTime.getMonth() +1;
 const day = dateTime.getDate();
 const hour = dateTime.getHours();
 const minute = dateTime.getMinutes();
@@ -131,11 +147,19 @@ const second = dateTime.getSeconds();
 
 nuevoComentario.description = document.getElementById('comentario').value;
 nuevoComentario.score = document.getElementById('puntuacion').value;
-nuevoComentario.user = sessionStorage.getItem('name');
-nuevoComentario.dateTime = dateTime;
+nuevoComentario.user = sessionStorage.getItem('name').split('@')[0];
+nuevoComentario.dateTime = year +"-"+ month + "-" + day +" "+ hour +":" + minute + ":"+ second 
 
 comentariosNuevos.push(nuevoComentario);
 
 mostrarComentarios(comentariosNuevos);
-})
+
+comentariosNuevos = [];
+document.getElementById('comentario').value = "";
+});
+
+function setID(id) {
+    localStorage.setItem("ID", id);
+    window.location = "product-info.html"
+}
 

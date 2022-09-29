@@ -85,8 +85,6 @@ function setID(id) {
                 mostrarDatos(productos);
                     document.getElementById('tittle').innerHTML = `Veras aqui todos los productos de la categoría `+ resultObj.data.catName
                     
-                    let username = sessionStorage.getItem('name');
-                    document.getElementById('username').innerHTML = username;
              }
          })
          document.getElementById("arregloas").addEventListener("click", ()=>{
@@ -110,6 +108,7 @@ function setID(id) {
         });
 
         comprobrar();
+        mostrarUsuario();
 
 
         document.getElementById("filtrar").addEventListener("click", ()=>{

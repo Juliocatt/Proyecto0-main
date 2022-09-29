@@ -61,3 +61,20 @@ function comprobrar(){
   };
   
 }
+
+
+function mostrarUsuario(){
+htmlagregar=`
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    ${sessionStorage.getItem('name').split('@')[0]}
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+    <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+    <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+  </ul>
+</div>
+`
+  document.getElementById('username').innerHTML = htmlagregar;
+}

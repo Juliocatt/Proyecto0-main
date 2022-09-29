@@ -18,22 +18,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-
-
-document.getElementById('salir').addEventListener("click", ()=>{
-    
-  sessionStorage.clear()
-
-  comprobrar()
-});
-
-function mostrarUsuario(){
-
-    let username = sessionStorage.getItem('name');
-
-    document.getElementById('username').innerHTML = username;
-};
-
 function comprobrar(){
 
     let user = sessionStorage.name

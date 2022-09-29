@@ -93,12 +93,10 @@ document.addEventListener("DOMContentLoaded", ()=> {
             currentCategoriesArray = resultObj.data
             showCategoriesList()
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
-            let username = sessionStorage.getItem('name');
-
-            document.getElementById('username').innerHTML = username;
+            
         }
     });
-
+    mostrarUsuario();
     comprobrar();
 
     document.getElementById("sortAsc").addEventListener("click", function(){
