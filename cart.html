@@ -40,9 +40,43 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div>
+        <br><h4 class="centrado" >Carrito de Compras.</h4><br>
       </div>
+      <table class="table">
+         <thead>
+           <tr>
+              <th scope="col">Vista Previa</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Costo</th>
+             <th scope="col">Cantidad</th>
+             <th scope="col">Subtotal</th>
+           </tr>
+          </thead>
+          <tbody id="datosCarrito">
+          </tbody>
+      </table>
+
+      <div>
+        <br><h4>Tipo de envío</h4>
+        <input type="radio" name="tipoEnvio"> Premium 2 a 5 días (15%). <br>
+        <input type="radio" name="tipoEnvio"> Express 5 a 8 días (8%).<br>
+        <input type="radio" name="tipoEnvio"> Standard 12 a 15 días (5%).
+        
+        <hr><h4>Dirección del envío</h4>
+
+        <div class="row">
+        <div class="d-flex">
+          <input type="text" name="calle" placeholder="calle" class="casilla sizebox">
+          <input type="text" name="numero" placeholder="número" class="casilla sizemd">
+        </div>
+        </div><br>
+        <input type="text" name="esquina" placeholder="esquina" class="casilla sizebox">
+        <br>
+        <br><input type="button" id="btnEnvio" value="Confirmar" class="casilla">
+        <hr>
+      </div>
+
     </div>
   </main>
   <footer class="text-muted">
@@ -66,6 +100,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

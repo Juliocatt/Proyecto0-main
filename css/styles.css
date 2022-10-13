@@ -254,4 +254,28 @@ text-align: center;
   color: yellow;
 }
 
+.casilla{
+  border-radius: 5px;
+}
 
+.sizecartimage{
+  width: 50px;
+}
+
+.sizebox{
+  width: 300px;
+}
+
+.sizemd{
+  width: 150px;
+  margin-left: 20px;
+}
+
+.sizesh{
+  width: 40px;
+}
+
+#botonAddCart{
+  background-color: green;
+  color: whitesmoke;
+}

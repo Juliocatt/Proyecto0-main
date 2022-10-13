@@ -43,7 +43,7 @@ let getJSONData = function(url){
 
 function comprobrar(){
 
-  let usuario = sessionStorage.name
+  let usuario = sessionStorage.name 
 
   if( usuario  === undefined){
       

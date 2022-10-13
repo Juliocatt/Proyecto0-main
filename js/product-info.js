@@ -3,47 +3,53 @@ let comentarios = PRODUCT_INFO_COMMENTS_URL + localStorage.getItem('ID') + EXT_T
 let info = [];
 let coments = [];
 let comentariosNuevos = [];
+let arrayLocalNewProduct = [];
 
 
-document.addEventListener('DOMContentLoaded', ()=>{
+
+document.addEventListener('DOMContentLoaded', () => {
 
     getJSONData(informacion).then((resultObj) => {
-        if (resultObj.status === "ok"){
-           info = resultObj.data;
-          mostrarInfo(info);
-          mostrarRelacionados(info);
+        if (resultObj.status === "ok") {
+            info = resultObj.data;
+            mostrarInfo(info);
+            mostrarRelacionados(info);
         }
     })
-    getJSONData(comentarios).then((resultObj) =>{
-        if (resultObj.status === "ok"){
-           coments = resultObj.data;
-          mostrarComentarios(coments);
+    getJSONData(comentarios).then((resultObj) => {
+        if (resultObj.status === "ok") {
+            coments = resultObj.data;
+            mostrarComentarios(coments);
         }
     })
 
     comprobrar();
     mostrarUsuario();
-    
-   
+
+    if (localStorage.carrito != null){
+        arrayLocalNewProduct = JSON.parse(localStorage.getItem('carrito'));
+    }
+
+
 })
 
-function mostrarInfo(info){
-let contenido = "";
+function mostrarInfo(info) {
+    let contenido = "";
 
-contenido += `
-
+    contenido += `
 <div class="row">
     <div  class="col-5">
-        <br><h2> ${info.name} </h2> <br><hr>
+        <br><h2 > ${info.name} </h2> <br><hr>
         <div class="info">
             <h4> Precio</h4>
-            <p class="mb-1"> ${info.currency} ${info.cost}</p>
+            <p class="mb-1" id="infoPrecio"> ${info.currency} ${info.cost}</p>
             <h4> Descripción</h4>
             <p class="mb-1"> ${info.description}</p>
             <h4> Categoría</h4>
             <p class="mb-1"> ${info.category}</p>
             <h4> Cantidad vendidos</h4>
-            <p class="mb-1"> ${info.soldCount}</p>
+            <p class="mb-1"> ${info.soldCount}</p><br>
+            <input type="button" value="Agregar al Carrito" onclick="setInfo(info)" id="botonAddCart">  
             </div>
         
     </div>
@@ -78,15 +84,15 @@ contenido += `
 <hr>
 
 `
-document.getElementById('infodeproductos').innerHTML = contenido
+    document.getElementById('infodeproductos').innerHTML = contenido
 }
 
-function mostrarComentarios(array){
-let comentarios = "";
+function mostrarComentarios(array) {
+    let comentarios = "";
 
-for (let i = 0; i < array.length; i++){
-coments = array[i];
-comentarios += `
+    for (let i = 0; i < array.length; i++) {
+        coments = array[i];
+        comentarios += `
 <div class="coments">
         <div class"row">
             ${coments.user} ${coments.dateTime} <div id="score">${puntaje(coments.score)}</div>
@@ -95,16 +101,16 @@ comentarios += `
         </div>
 </div>
 `
-}
-document.getElementById('comentarios').innerHTML += comentarios;
+    }
+    document.getElementById('comentarios').innerHTML += comentarios;
 }
 
-function mostrarRelacionados(info){
-let contenido = "";
-for (let i = 0; i < info.relatedProducts.length; i++){
-relacionados = info.relatedProducts[i];
+function mostrarRelacionados(info) {
+    let contenido = "";
+    for (let i = 0; i < info.relatedProducts.length; i++) {
+        relacionados = info.relatedProducts[i];
 
-contenido += `
+        contenido += `
 
   <div class="d-flex">
     <div class="card" onclick="setID(${relacionados.id})">
@@ -116,46 +122,76 @@ contenido += `
 
 
 `
-}
-document.getElementById('relacionados').innerHTML += contenido;
-}
-
-function puntaje(puntos){
-    
-var estrellas = '';
-for (let i = 1; i <= 5; i ++){
-   
-    if (i<= puntos){
-        estrellas += '<i class="fas fa-star amarelo" ></i>';
-    } else {
-        estrellas += '<i class="far fa-star"></i>';
     }
+    document.getElementById('relacionados').innerHTML += contenido;
 }
-return estrellas
+
+function setInfo(array) {
+    let infoToCart = new Object();
+
+    infoToCart.name = array.name;
+    infoToCart.unitCost = array.cost;
+    infoToCart.image = array.images[0];
+    infoToCart.currency = array.currency;
+
+    arrayLocalNewProduct.push(infoToCart);
+    localStorage.setItem("carrito", JSON.stringify(arrayLocalNewProduct));
+
+     Swal.fire({
+         title: 'Agregado al carrito con éxito',
+         icon: 'question',
+         iconHtml: '?',
+         cancelButtonText: 'Continuar comprando',
+         showCancelButton: true,
+         showCloseButton: true,
+         confirmButtonText: 'Ir al Carrito'
+        }).then((result) => {
+            if (result.isConfirmed) {
+              window.location = "cart.html"
+            }
+        })
 }
 
-document.getElementById('sendComent').addEventListener('click', ()=>{
-let nuevoComentario = new Object();
+function puntaje(puntos) {
 
-const dateTime = new Date();
-const year = dateTime.getFullYear();
-const month = dateTime.getMonth() +1;
-const day = dateTime.getDate();
-const hour = dateTime.getHours();
-const minute = dateTime.getMinutes();
-const second = dateTime.getSeconds();
+    var estrellas = '';
+    for (let i = 1; i <= 5; i++) {
 
-nuevoComentario.description = document.getElementById('comentario').value;
-nuevoComentario.score = document.getElementById('puntuacion').value;
-nuevoComentario.user = sessionStorage.getItem('name').split('@')[0];
-nuevoComentario.dateTime = year +"-"+ month + "-" + day +" "+ hour +":" + minute + ":"+ second 
+        if (i <= puntos) {
+            estrellas += '<i class="fas fa-star amarelo" ></i>';
+        } else {
+            estrellas += '<i class="far fa-star"></i>';
+        }
+    }
+    return estrellas
+}
 
-comentariosNuevos.push(nuevoComentario);
+document.getElementById('sendComent').addEventListener('click', () => {
+    let nuevoComentario = new Object();
 
-mostrarComentarios(comentariosNuevos);
+    const dateTime = new Date();
+    const year = dateTime.getFullYear();
+    const month = dateTime.getMonth() + 1;
+    const day = dateTime.getDate();
+    const hour = dateTime.getHours();
+    const minute = dateTime.getMinutes();
+    const second = dateTime.getSeconds();
 
-comentariosNuevos = [];
-document.getElementById('comentario').value = "";
+    nuevoComentario.description = document.getElementById('comentario').value;
+    nuevoComentario.score = document.getElementById('puntuacion').value;
+    nuevoComentario.user = sessionStorage.getItem('name').split('@')[0];
+    nuevoComentario.dateTime = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second
+
+    comentariosNuevos.push(nuevoComentario);
+
+    mostrarComentarios(comentariosNuevos);
+
+    comentariosNuevos = [];
+    document.getElementById('comentario').value = "";
+
+    
+
+
 });
 
 function setID(id) {
