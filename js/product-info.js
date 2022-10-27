@@ -38,7 +38,7 @@ function mostrarInfo(info) {
 
     contenido += `
 <div class="row">
-    <div  class="col-5">
+    <div  class="col-lg-5 col-md-12">
         <br><h2 > ${info.name} </h2> <br><hr>
         <div class="info">
             <h4> Precio</h4>
@@ -49,7 +49,7 @@ function mostrarInfo(info) {
             <p class="mb-1"> ${info.category}</p>
             <h4> Cantidad vendidos</h4>
             <p class="mb-1"> ${info.soldCount}</p><br>
-            <input type="button" value="Agregar al Carrito" onclick="setInfo(info)" id="botonAddCart">  
+            <input type="button" class="btn btn-outline-success" value="Agregar al Carrito" onclick="setInfo(info)" id="botonAddCart">  
             </div>
         
     </div>
@@ -94,7 +94,7 @@ function mostrarComentarios(array) {
         coments = array[i];
         comentarios += `
 <div class="coments">
-        <div class"row">
+        <div>
             ${coments.user} ${coments.dateTime} <div id="score">${puntaje(coments.score)}</div>
             ${coments.description}
 

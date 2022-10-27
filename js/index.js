@@ -18,23 +18,3 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-function comprobrar(){
-
-    let user = sessionStorage.name
-
-    if( user  === undefined){
-        
-        Swal.fire({
-            title: 'Usted no ha iniciado sesión',
-            text: "Por favor, iniciar sesión para continuar",
-            icon: 'warning',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Iniciar sesión.'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location = "login.html"
-            }
-          })
-    };
-    
-}

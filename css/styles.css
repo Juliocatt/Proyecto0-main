@@ -199,7 +199,6 @@ text-align: center;
 
 .log{
   width: 300px;
-  margin-left: 40%;
 }
 
 .logboton{
@@ -268,14 +267,10 @@ text-align: center;
 
 .sizemd{
   width: 150px;
-  margin-left: 20px;
 }
 
 .sizesh{
   width: 40px;
 }
 
-#botonAddCart{
-  background-color: green;
-  color: whitesmoke;
-}
+

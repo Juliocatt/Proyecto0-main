@@ -40,6 +40,9 @@ let getJSONData = function(url){
         return result;
     });
 }
+function logOut(){
+  sessionStorage.removeItem('name');
+}
 
 function comprobrar(){
 
@@ -72,7 +75,7 @@ htmlagregar=`
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
     <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
-    <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+    <li><a class="dropdown-item" onclick="logOut(),comprobrar()" >Cerrar sesión</a></li>
   </ul>
 </div>
 `
