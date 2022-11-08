@@ -49,7 +49,17 @@ function comprobrar(){
   let usuario = sessionStorage.name 
 
   if( usuario  === undefined){
-      
+    htmlagregar=`
+      <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Menu
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="login.html" >Iniciar sesión</a></li>
+      </ul>
+    </div>`
+  document.getElementById('username').innerHTML = htmlagregar;
+
       Swal.fire({
           title: 'Usted no ha iniciado sesión',
           text: "Por favor, iniciar sesión para continuar",
@@ -61,23 +71,26 @@ function comprobrar(){
             window.location = "login.html"
           }
         })
-  };
-  
-}
+  }else{
 
+    let email = sessionStorage.getItem('name');
+    htmlagregar=`
+      <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        ${sessionStorage.getItem('name').split('@')[0]}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+        <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+        <li><a class="dropdown-item" onclick="logOut(),comprobrar()" >Cerrar sesión</a></li>
+      </ul>
+    </div>`
 
-function mostrarUsuario(){
-htmlagregar=`
-  <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    ${sessionStorage.getItem('name').split('@')[0]}
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-    <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
-    <li><a class="dropdown-item" onclick="logOut(),comprobrar()" >Cerrar sesión</a></li>
-  </ul>
-</div>
-`
   document.getElementById('username').innerHTML = htmlagregar;
+  document.getElementById('emailFoto').innerHTML= email;
+  document.getElementById('emailPerfil').value = email;
+  } 
 }
+
+
+

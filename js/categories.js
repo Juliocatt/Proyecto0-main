@@ -40,6 +40,8 @@ function setCatID(id) {
     window.location = "products.html"
 }
 
+
+// funcion que muestra las categorias
 function showCategoriesList(){
 
     let htmlContentToAppend = "";

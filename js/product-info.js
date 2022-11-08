@@ -30,9 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
         arrayLocalNewProduct = JSON.parse(localStorage.getItem('carrito'));
     }
 
-
 })
-
+//funcion que muestra la información de los productos y carrousel de fotos
 function mostrarInfo(info) {
     let contenido = "";
 
@@ -82,36 +81,33 @@ function mostrarInfo(info) {
     </div>
 </div>
 <hr>
-
 `
     document.getElementById('infodeproductos').innerHTML = contenido
 }
-
+//funcion que carga comentarios
 function mostrarComentarios(array) {
     let comentarios = "";
 
     for (let i = 0; i < array.length; i++) {
         coments = array[i];
         comentarios += `
-<div class="coments">
-        <div>
-            ${coments.user} ${coments.dateTime} <div id="score">${puntaje(coments.score)}</div>
-            ${coments.description}
+        <div class="coments">
+            <div>
+                ${coments.user} ${coments.dateTime} <div id="score">${puntaje(coments.score)}</div>
+                ${coments.description}
 
-        </div>
-</div>
-`
+            </div>
+        </div>`
     }
     document.getElementById('comentarios').innerHTML += comentarios;
 }
-
+//funcion que carga los relacionados 
 function mostrarRelacionados(info) {
     let contenido = "";
     for (let i = 0; i < info.relatedProducts.length; i++) {
         relacionados = info.relatedProducts[i];
 
         contenido += `
-
   <div class="d-flex">
     <div class="card" onclick="setID(${relacionados.id})">
       <img src="${relacionados.image}" class="card-img-top" alt="...">
@@ -119,13 +115,11 @@ function mostrarRelacionados(info) {
         <h5 class="card-title">${relacionados.name}</h5>
       </div>
     </div>
-
-
 `
     }
     document.getElementById('relacionados').innerHTML += contenido;
 }
-
+//funcion que guarda la informacion de los productos que agrego al carrito en el local storage
 function setInfo(array) {
     let infoToCart = new Object();
 
@@ -151,9 +145,8 @@ function setInfo(array) {
             }
         })
 }
-
+//Funcion que muestra estrellas con iconos
 function puntaje(puntos) {
-
     var estrellas = '';
     for (let i = 1; i <= 5; i++) {
 
@@ -166,8 +159,10 @@ function puntaje(puntos) {
     return estrellas
 }
 
+//Evento que agrega los nuevos comentarios
 document.getElementById('sendComent').addEventListener('click', () => {
     let nuevoComentario = new Object();
+    comentariosNuevos = [];
 
     const dateTime = new Date();
     const year = dateTime.getFullYear();
@@ -185,15 +180,9 @@ document.getElementById('sendComent').addEventListener('click', () => {
     comentariosNuevos.push(nuevoComentario);
 
     mostrarComentarios(comentariosNuevos);
-
-    comentariosNuevos = [];
     document.getElementById('comentario').value = "";
-
-    
-
-
 });
-
+//funcion que guarda el ID
 function setID(id) {
     localStorage.setItem("ID", id);
     window.location = "product-info.html"

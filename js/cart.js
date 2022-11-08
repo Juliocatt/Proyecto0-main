@@ -35,6 +35,7 @@ function mostrarInfoCart(array) {
 }
   
 }
+//Funcion que permite eliminar del carrito
 
 function eliminar(i){
 
@@ -43,6 +44,8 @@ function eliminar(i){
   mostrarInfoCart(JSON.parse(localStorage.getItem('carrito')));
   calculoSubTotal();
 }
+
+//Funcion que calcula totales y envio
 
 function calculoSubTotal(){
    let dato =  document.getElementsByClassName('precios');
@@ -77,14 +80,12 @@ function subtotal(array, i) {
 
   document.getElementById('costoProducto' + i).innerHTML =  costoFinal;
 }
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+
 (function () {
   'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
   var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
   Array.prototype.slice.call(forms)
     .forEach(function (form) {
       form.addEventListener('submit', function (event) {
@@ -107,6 +108,8 @@ function subtotal(array, i) {
       }, false)
     })
 })()
+
+//Función que desabilita y habilita metodos de pago de la modal
 
 function ableDisable(){
   let tarjeta = document.getElementById('acordionTarj');
@@ -157,12 +160,16 @@ document.addEventListener("DOMContentLoaded", () => {
     })
  }
 
+ //Cambio de metodo de pago en la modal
+
 document.getElementById('acordionTrans').addEventListener('click', ()=>{
   ableDisable();
 })
 document.getElementById('acordionTarj').addEventListener('click', ()=>{
   ableDisable();
 })
+
+//Boton guardar modal
 
 let modalPago = document.getElementById('formModal');
 let boton = document.getElementById('btnModal');
@@ -183,6 +190,8 @@ if (modalPago.checkValidity(e)){
       })
     }
 })
+
+//Boton finalizar compra
 
 document.getElementById('btnFinalizar').addEventListener('submit',(e)=>{
   e.preventDefault();

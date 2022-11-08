@@ -39,7 +39,7 @@
     </div>
   </nav>
   <main>
-    
+
     <div class="container">
       <div>
         <br>
@@ -63,26 +63,29 @@
       <!-- Datos de Envío -->
       <div class="container">
         <h4>Tipo de envío</h4>
-        <div >
+        <div>
           <input type="radio" name="tipoEnvio" value=0.15 checked> Premium 2 a 5 días (15%). <br>
-          <input type="radio" name="tipoEnvio" value=0.08 > Express 5 a 8 días (8%).<br>
-          <input type="radio" name="tipoEnvio" value=0.05 > Standard 12 a 15 días (5%).
-        </div><hr>
+          <input type="radio" name="tipoEnvio" value=0.08> Express 5 a 8 días (8%).<br>
+          <input type="radio" name="tipoEnvio" value=0.05> Standard 12 a 15 días (5%).
+        </div>
+        <hr>
       </div>
-        
+
       <div class="container">
-          <h4>Dirección del envío</h4>
+        <h4>Dirección del envío</h4>
         <div class="row">
           <div class="col-3">
             <label for="validacion1" class="form-label">Calle</label>
-            <input type="text" name="calle" placeholder="calle" class="form-control casilla sizebox" id="validacion1"  required>
+            <input type="text" name="calle" placeholder="calle" class="form-control casilla sizebox" id="validacion1"
+              required>
             <div class="invalid-feedback">
               Ingrese su Calle
             </div>
           </div>
           <div class="col-3">
             <label for="validacion2" class="form-label">Número</label>
-            <input type="text" name="numero" placeholder="número" class="form-control casilla sizemd" id="validacion2" required>
+            <input type="text" name="numero" placeholder="número" class="form-control casilla sizemd" id="validacion2"
+              required>
             <div class="invalid-feedback">
               Ingrese su Número
             </div>
@@ -90,150 +93,156 @@
         </div>
         <div>
           <label for="validacion3" class="form-label">Esquina</label>
-          <input type="text" name="esquina" placeholder="esquina" class="form-control casilla sizebox" id="validacion3" required>
+          <input type="text" name="esquina" placeholder="esquina" class="form-control casilla sizebox" id="validacion3"
+            required>
           <div class="invalid-feedback">
             Ingrese su Esquina
           </div>
         </div>
         <hr>
       </div>
-    <!-- Subtotales -->
-    <div class="container">
-      <h4>Costos</h4>
+      <!-- Subtotales -->
       <div class="container">
-        <div class="row coments">
-          <div class="col-10">
-            Subtotal<br>
-            <span>Costo unitario del producto por cantidad</span>
+        <h4>Costos</h4>
+        <div class="container">
+          <div class="row coments">
+            <div class="col-10">
+              Subtotal<br>
+              <span>Costo unitario del producto por cantidad</span>
+            </div>
+            <div class="col-2">
+              <span>USD </span><span id="costoTotalCarrito"></span>
+            </div>
           </div>
-          <div class="col-2">
-           <span>USD </span><span  id="costoTotalCarrito"></span>
+          <div class="row coments">
+            <div class="col-10">
+              Costo de envío<br>
+              <span>Según el tipo de envío</span>
+            </div>
+            <div class="col-2">
+              <span>USD </span><span id="soloEnvio"></span>
+            </div>
           </div>
-        </div>
-        <div class="row coments">
-          <div class="col-10">
-            Costo de envío<br>
-            <span>Según el tipo de envío</span>
-          </div>
-          <div class="col-2">
-            <span>USD </span><span  id="soloEnvio"></span>
-          </div>
-        </div>
-        <div class="row coments">
-          <div class="col-10">
-            Total (US$) <br>
-          </div>
-          <div class="col-2">
-            <span>USD </span><span  id="carritoMasEnvio"></span>
+          <div class="row coments">
+            <div class="col-10">
+              Total (US$) <br>
+            </div>
+            <div class="col-2">
+              <span>USD </span><span id="carritoMasEnvio"></span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    
-      
+      <!-- Selección de pago -->
+
       <div class="container">
         <hr>
         <h4>Forma de pago</h4>
         <div class="input-group">
-          <input type="text"  id="infoPago" class="form-control casilla" maxlength="0" placeholder="Selecione un método de pago" required>
-          <input type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPago" value="Seleccionar método de pago">
-            <div class="invalid-feedback">
-              Seleccione un método de pago.
-            </div>
+          <input type="text" id="infoPago" class="form-control casilla" maxlength="0"
+            placeholder="Selecione un método de pago" required>
+          <input type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPago"
+            value="Seleccionar método de pago">
+          <div class="invalid-feedback">
+            Seleccione un método de pago.
+          </div>
         </div>
       </div>
 
-    <div class="container d-grid">
-      <input type="submit" value="Finalizar Compra" class="btn btn-primary mt-5" id="btnFinalizar">
-    </div>
-  </form>
+      <div class="container d-grid">
+        <input type="submit" value="Finalizar Compra" class="btn btn-primary mt-5" id="btnFinalizar">
+      </div>
+    </form>
 
-        <!-- Modal forma de pago -->
-        
-        <form class="needs-validation" id="formModal" novalidate>
-        
-          <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="titleModal" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="titleModal">Forma de pago</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                          Tarjeta de Crédito
-                        </button>
-                      </h2>
-                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                          <input type="radio" value="Tarjeta de Crédito" name="tipoPago" id="acordionTarj">Tarjeta de Crédito.<hr>
-                          <div class="row">
-                            <div class="col-6">
-                              <label for="valModal1" class="form-label">Número de la Tarjeta</label>
-                              <input type="text" class="form-control casilla" id="valModal1" placeholder="Numero de la tarjeta" minlength="13" maxlength="18" pattern="[0,9]{13-18}" required>
-                              <div class="invalid-feedback">
-                                Ingrese su num de tarjeta
-                              </div>
-                              <div class="mt-2">
-                                <label for="valModal2" class="form-label">Fecha de vencimiento</label>
-                                <input type="text" class="form-control casilla" id="valModal2" placeholder="(Mes/año)" maxlength="5" minlength="5" required>
-                                <div class="invalid-feedback">
-                                  Ingrese su fecha
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-6">
-                              <label for="valModal3" class="form-label">Código de seg.</label>
-                              <input type="text" class="form-control casilla sizemd" id="valModal3" placeholder="Código de seg" maxlength="3" minlength="3" pattern="[0,9]{3}" required>
-                              <div class="invalid-feedback">
-                                Ingrese su codigo
-                              </div>
+    <!-- Modal forma de pago -->
+
+    <form class="needs-validation" id="formModal" novalidate>
+
+      <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="titleModal" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="titleModal">Forma de pago</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Tarjeta de Crédito
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <input type="radio" value="Tarjeta de Crédito" name="tipoPago" id="acordionTarj">Tarjeta de
+                      Crédito.
+                      <hr>
+                      <div class="row">
+                        <div class="col-6">
+                          <label for="valModal1" class="form-label">Número de la Tarjeta</label>
+                          <input type="text" class="form-control casilla" id="valModal1"
+                            placeholder="Numero de la tarjeta" minlength="13" maxlength="18" pattern="[0,9]{13-18}"
+                            required>
+                          <div class="invalid-feedback">
+                            Ingrese su num de tarjeta
+                          </div>
+                          <div class="mt-2">
+                            <label for="valModal2" class="form-label">Fecha de vencimiento</label>
+                            <input type="text" class="form-control casilla" id="valModal2" placeholder="(Mes/año)"
+                              maxlength="5" minlength="5" required>
+                            <div class="invalid-feedback">
+                              Ingrese su fecha
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                          Transferencia Bancaria
-                        </button>
-                      </h2>
-                      <div id="flush-collapseTwo" class="accordion-collapse collapse"  aria-labelledby="flush-headingTwo"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                          <input type="radio" value="Transferencia Bancaria" name="tipoPago" id="acordionTrans">Transferencia Bancaria.<hr>
-                          <label for="valModal4" class="form-label">Numero de la cuenta</label>
-                          <input type="text" class="form-control casilla" id="valModal4" placeholder="N° de Cuenta" minlength="15" maxlength="24" pattern="[0-9, a-z]{15-24}" required>
+                        <div class="col-6">
+                          <label for="valModal3" class="form-label">Código de seg.</label>
+                          <input type="text" class="form-control casilla sizemd" id="valModal3"
+                            placeholder="Código de seg" maxlength="3" minlength="3" pattern="[0,9]{3}" required>
                           <div class="invalid-feedback">
-                            Ingrese su numero de cuenta
+                            Ingrese su codigo
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary" id="btnModal" >Guardar</button>
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                      Transferencia Bancaria
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <input type="radio" value="Transferencia Bancaria" name="tipoPago"
+                        id="acordionTrans">Transferencia Bancaria.
+                      <hr>
+                      <label for="valModal4" class="form-label">Numero de la cuenta</label>
+                      <input type="text" class="form-control casilla" id="valModal4" placeholder="N° de Cuenta"
+                        minlength="15" maxlength="24" pattern="[0-9, a-z]{15-24}" required>
+                      <div class="invalid-feedback">
+                        Ingrese su numero de cuenta
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" id="btnModal">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
           </div>
-      </form>
-
-
-
-
-
-      
+        </div>
+      </div>
+    </form>
   </main>
   <footer class="text-muted">
     <div class="container">

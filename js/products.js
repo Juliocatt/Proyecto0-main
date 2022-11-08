@@ -38,12 +38,10 @@ function ordenarProductos(criteria, array){
 
 function ordenaryMostrar(sortCriteria){
     criterioOrdenar = sortCriteria;
-
     productos = ordenarProductos(criterioOrdenar, productos);
-
     mostrarDatos(productos);
 }
-
+//funcion que muestra datos de los productos
 function mostrarDatos(array){
     let htmlContentToAppend = "";
 
@@ -104,13 +102,12 @@ function setID(id) {
             maxCost = undefined;
     
             mostrarDatos(productos);
-            
         });
 
         comprobrar();
         mostrarUsuario();
 
-
+        //filtros entre precios
         document.getElementById("filtrar").addEventListener("click", ()=>{
             
             minCost = document.getElementById("rangodepreciomin").value;
@@ -132,26 +129,22 @@ function setID(id) {
 
             mostrarDatos(productos);
         });
-
+        //disparador para buscar productos
         document.getElementById('buscador').addEventListener('keyup', ()=>{
-
-            buscar(productos);
-           
+            buscar(productos); 
         })
        
       });
 
       
-
+      //funcion con input que busca productos
       function buscar(productos){   
-        
         let busqueda = document.getElementById('buscador').value;
        
         let filtrado = productos.filter(producto => {
-        return (producto.name.toLowerCase().indexOf(busqueda.toLowerCase()) > -1 )|| (producto.description.toLowerCase().indexOf(busqueda.toLowerCase()) > -1);
-
+        return (producto.name.toLowerCase().indexOf(busqueda.toLowerCase()) > -1 )
+        || (producto.description.toLowerCase().indexOf(busqueda.toLowerCase()) > -1);
        })
-       
        mostrarDatos(filtrado);
     }   
 
