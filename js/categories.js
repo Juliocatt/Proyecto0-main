@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
             
         }
     });
-    mostrarUsuario();
+
     comprobrar();
 
     document.getElementById("sortAsc").addEventListener("click", function(){

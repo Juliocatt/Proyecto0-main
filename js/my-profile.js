@@ -22,44 +22,46 @@ document.addEventListener('DOMContentLoaded', ()=>{
    document.getElementById('formPerfil').addEventListener('submit', (event)=>{
      if (!formPerfil.checkValidity()) {
        event.preventDefault()
-       event.stopPropagation()
-       
-     }else{
-    event.preventDefault()
-    event.stopPropagation()
-    guardarDatos();
-  }
+       event.stopPropagation() 
+       }else{
+        guardarDatos();
+      }
      document.body.classList.add('was-validated');
    })
 
 function guardarDatos(){
-let informacionPerfil = [];
-let datos = new Object();
+let datos = {};
 
 datos.nombre = document.getElementById('nombrePerfil').value;
- datos.segNombre = document.getElementById('segundo').value;
+datos.segNombre = document.getElementById('segundo').value;
 datos.apellido = document.getElementById('apellidoPerfil').value;
 datos.segApellido = document.getElementById('segApellido').value;
 datos.telefono = document.getElementById('telefono').value; 
-datos.imagen = '';
+datos.imagen = document.getElementById('emailFoto').src;
 
-informacionPerfil.push(datos);
-localStorage.setItem('infoPerfil', JSON.stringify(informacionPerfil));
+localStorage.setItem('infoPerfil', JSON.stringify(datos));
 }
 
 function obtenerDatos(){
   let obtenido = JSON.parse(localStorage.getItem('infoPerfil'));
-  console.log(obtenido);
 
   if (obtenido !== null){
-    document.getElementById('nombrePerfil').value = obtenido[0].nombre;
-    document.getElementById('segundo').value = obtenido[0].segNombre;
-    document.getElementById('apellidoPerfil').value = obtenido[0].apellido;
-    document.getElementById('segApellido').value = obtenido[0].segApellido;
-    document.getElementById('telefono').value = obtenido[0].telefono;
+    document.getElementById('nombrePerfil').value = obtenido.nombre;
+    document.getElementById('segundo').value = obtenido.segNombre;
+    document.getElementById('apellidoPerfil').value = obtenido.apellido;
+    document.getElementById('segApellido').value = obtenido.segApellido;
+    document.getElementById('telefono').value = obtenido.telefono;
+    document.getElementById('emailFoto').src = obtenido.imagen;
+  }else{
+    document.getElementById('emailFoto').src = "/img/perfil.png"
   }
 
-  if(obtenido[0].imagen == ""){
+  if (sessionStorage.name == null){
+    document.getElementById('nombrePerfil').value = "";
+    document.getElementById('segundo').value = "";
+    document.getElementById('apellidoPerfil').value = "";
+    document.getElementById('segApellido').value = "";
+    document.getElementById('telefono').value = "";
     document.getElementById('emailFoto').src = "/img/perfil.png"
   }
 

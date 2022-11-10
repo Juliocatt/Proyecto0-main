@@ -42,6 +42,9 @@ let getJSONData = function(url){
 }
 function logOut(){
   sessionStorage.removeItem('name');
+  if(localStorage.infoPerfil){
+    localStorage.removeItem('infoPerfil');
+  }
 }
 
 function comprobrar(){
@@ -87,8 +90,8 @@ function comprobrar(){
     </div>`
 
   document.getElementById('username').innerHTML = htmlagregar;
-  document.getElementById('emailFoto').innerHTML= email;
-  document.getElementById('emailPerfil').value = email;
+  // document.getElementById('emailFoto').innerHTML= email;
+  // document.getElementById('emailPerfil').value = email;
   } 
 }
 

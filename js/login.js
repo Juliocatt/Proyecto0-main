@@ -1,32 +1,28 @@
-//funcion que 
-function enviar(){
+(function () {
+  'use strict'
+  var forms = document.querySelectorAll('.needs-validation')
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }else{
+          event.preventDefault()
+          event.stopPropagation()
+          sessionStorage.setItem('name',document.getElementById('usuario').value)
+          window.location.href = "index.html"
+        }
 
-let usuario = document.getElementById('usuario').value
-let password = document.getElementById('password').value
-
-if (usuario === "" || password === ""){
-    document.getElementById('usuario').style.borderColor="red"
-    document.getElementById('password').style.borderColor="red"
-    document.getElementById('ingresar').style.borderColor="lightblue"
-    document.getElementById('alertamail').innerHTML = `Ingresa tu e-mail`
-    document.getElementById('alertacontra').innerHTML = `Ingresa tu contraseña`
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Ingrese E-mail y contraseña',
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
-} else{
-    
-    sessionStorage.setItem('name', usuario)
-    
-    window.location.href = "index.html"
-};}
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
 
 document.addEventListener("DOMContentLoaded", ()=> {
 
-    document.getElementById('ingresar').addEventListener('click', ()=> {
-        enviar()
-    })
+    // document.getElementById('ingresar').addEventListener('click', ()=> {
+    //     enviar()
+    // })
 
 })

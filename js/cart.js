@@ -136,7 +136,7 @@ function ableDisable(){
 
 document.addEventListener("DOMContentLoaded", () => {
   comprobrar();
-  mostrarUsuario();
+  
 
   getJSONData(UrlCart).then((resultObj) => {
     if (resultObj.status === "ok") {
@@ -144,11 +144,11 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (localStorage.carrito != null) {
         agregarCarrito = JSON.parse(localStorage.getItem('carrito'));
-        //agregarCarrito.push(infoCart);
+         //agregarCarrito.push(infoCart);
         mostrarInfoCart(agregarCarrito);
         calculoSubTotal()
       }else{
-        agregarCarrito.push(infoCart);
+       // agregarCarrito.push(infoCart);
         mostrarInfoCart(agregarCarrito);
         calculoSubTotal()
       }

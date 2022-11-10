@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     comprobrar();
-    mostrarUsuario();
+   
 
     if (localStorage.carrito != null){
         arrayLocalNewProduct = JSON.parse(localStorage.getItem('carrito'));
@@ -37,8 +37,8 @@ function mostrarInfo(info) {
 
     contenido += `
 <div class="row">
-    <div  class="col-lg-5 col-md-12">
-        <br><h2 > ${info.name} </h2> <br><hr>
+    <div  class="col-lg-5 col-md-5">
+        <br><h2 > ${info.name} </h2><hr>
         <div class="info">
             <h4> Precio</h4>
             <p class="mb-1" id="infoPrecio"> ${info.currency} ${info.cost}</p>
@@ -53,7 +53,7 @@ function mostrarInfo(info) {
         
     </div>
 
-    <div class="size">
+    <div class="size col-lg-7 ">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -127,7 +127,8 @@ function setInfo(array) {
     infoToCart.unitCost = array.cost;
     infoToCart.image = array.images[0];
     infoToCart.currency = array.currency;
-
+    
+    arrayLocalNewProduct = JSON.parse(localStorage.getItem("carrito"))
     arrayLocalNewProduct.push(infoToCart);
     localStorage.setItem("carrito", JSON.stringify(arrayLocalNewProduct));
 

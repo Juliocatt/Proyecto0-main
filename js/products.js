@@ -105,7 +105,7 @@ function setID(id) {
         });
 
         comprobrar();
-        mostrarUsuario();
+        
 
         //filtros entre precios
         document.getElementById("filtrar").addEventListener("click", ()=>{

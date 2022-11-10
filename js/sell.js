@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         updateTotalCosts();
     });
 
-    mostrarUsuario();
+   
     comprobrar();
 
     document.getElementById("productCurrency").addEventListener("change", function(){

@@ -19,27 +19,25 @@
 
 <body class="fondolog">
   <main class="mt-5">
-    <img class="rounded mx-auto d-block img-fluid" src="img/login.png">
-
-    <div class="centrado">
-      <h3>Inicio de sesión</h3>
-
-      Email <br>
-
-      <div class="red">
-      <label for="username"><input type="text" id="usuario"   class="borde"></label> <br>
-      <p id="alertamail"></p>
-    </div>
-
-      <br>Contraseña <br>
-
-      <div  class="red">
-      <label for="passwors=d"><input type="password" id="password" class="borde" ></label> <br>
-      <p id="alertacontra"></p>
-    </div>
-
-    <button class="logboton" id="ingresar" value="Ingresar">Ingresar</button>
-    </div>
+    <img class=" mx-auto d-block img-fluid col-sm-10 col-md-8 col-lg-6 mt-4" src="img/login.png">
+      <form class="container needs-validation centrado" id="formLogin" novalidate>
+        <h3>Inicio de sesión</h3>
+        <div class="col-sm-12 col-md-6 col-lg-4 mt-4 mx-auto">
+          <label for="usuario" class="form-label">Usuario</label> 
+          <input type="text" id="usuario" class="form-control" required>
+          <div class="invalid-feedback">
+            Ingrese su Email
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 mt-4 mx-auto" >
+          <label for="contra" class="form-label">Contraseña</label>
+          <input type="password" id="contra" class="form-control" required>
+          <div class="invalid-feedback">
+            Ingrese su contraseña
+          </div>
+        </div>
+      <input type="submit" class="btn btn-info mt-2" value="Ingresar">
+    </form>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -53,6 +51,7 @@
   </footer>
   <script src="js/login.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

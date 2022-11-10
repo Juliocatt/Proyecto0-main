@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
    comprobrar()
 
-   mostrarUsuario()
+
 
 });
 
