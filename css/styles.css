@@ -228,10 +228,6 @@ text-align: center;
   background-color:rgba(0, 0, 0, 0.5)
 }
 
-#buscador{
-  border-radius: 10px;
-  width: 40%;
-}
 
 .size{
   margin-top: 8%;
@@ -250,22 +246,7 @@ text-align: center;
   color: yellow;
 }
 
-.casilla{
-  border-radius: 5px;
-}
-
 .sizecartimage{
   width: 50px;
 }
 
-.sizebox{
-  width: 300px;
-}
-
-.sizemd{
-  width: 150px;
-}
-
-.sizesh{
-  width: 40px;
-}
