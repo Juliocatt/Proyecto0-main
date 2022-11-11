@@ -7,7 +7,7 @@
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="/css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -43,27 +43,28 @@
   <main>
     <div class="container ">
       <p id="infodeproductos"></p>
-      <h4>Comentarios</h4>
-      <p id="comentarios"></p>
-      <h4>Agregar un comentario.</h4>
-      <p id="comentar">
+      <div class="container card">
+        <h4>Comentarios</h4>
+        <div class="container" id="comentarios"></div>
+        <h4 class="mt-4">Agregar un comentario.</h4>
+        <p id="comentar">
 
-        Tu opinión: <br>
-        <label for="comentario"  >
-          <textarea name="comentario" id="comentario" cols="60" rows="3" ></textarea>
-        </label><br>
+          Tu opinión: <br>
+          <label for="comentario" class="container" >
+            <textarea class="form-control" name="comentario" id="comentario"  rows="3" ></textarea>
+          </label><br>
 
-        Tu puntuación:<br>
-        <select name="puntuacion" id="puntuacion" class="casilla">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select> <br>
-        <input type="button" value="Enviar" class="btn btn-primary casilla" id="sendComent">
-        <br><hr>
-        <h4>Productos Relacionados</h4>
+          Tu puntuación:<br>
+          <select name="puntuacion" id="puntuacion" class="">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <input type="button" value="Enviar" class="btn btn-primary mt-3" id="sendComent">
+        </div>
+        <h4 class="mt-4">Productos Relacionados</h4>
         <div class="row row-cols-1 row-cols-md-3 g-4" id="relacionados"></div>
       </p>
     </div>

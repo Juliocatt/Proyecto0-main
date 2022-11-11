@@ -95,7 +95,6 @@ function mostrarComentarios(array) {
             <div>
                 ${coments.user} ${coments.dateTime} <div id="score">${puntaje(coments.score)}</div>
                 ${coments.description}
-
             </div>
         </div>`
     }
