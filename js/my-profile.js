@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     comprobrar();
     obtenerDatos();
 
+    let email = sessionStorage.name
+    document.getElementById('emailPerfil').value = email;
+
     document.getElementById('agregarImagen').addEventListener('change', ()=>{
       let foto = document.getElementById('emailFoto');
       let inputCarga = document.getElementById('agregarImagen').files[0];

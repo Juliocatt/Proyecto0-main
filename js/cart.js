@@ -23,7 +23,7 @@ function mostrarInfoCart(array) {
           <td scope="col"><span class="moneda">${info.currency}</span> <span class="costo">${info.unitCost}</span></td>
           <td scope="col" class="col-lg-2 col-md-3"><input type="number" class="form-control" id="cantidadProd${i}" value="1" min="1" onchange="subtotal(agregarCarrito[${i}], ${i}),calculoSubTotal()" ></td>
           <td scope="col"><span>USD </span> <span id="costoProducto${i}" class="precios">${info.unitCost}</span></td>
-          <td   scope="col"><button class="borra"><i class="fas fa-trash"></i></button></td>
+          <td scope="col"><button class="borra"><i class="fas fa-trash"></i></button></td>
         </tr>`;
   }
   document.getElementById("datosCarrito").innerHTML = cartInfo;
@@ -179,6 +179,7 @@ if (modalPago.checkValidity(e)){
     e.preventDefault();
     e.stopPropagation();
     document.getElementById('infoPago').value = document.getElementById('titleModal').innerHTML;
+    document.getElementById('infoPago').disabled = true;
     Swal.fire({
         position: 'top-center',
         icon: 'success',

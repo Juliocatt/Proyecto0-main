@@ -19,10 +19,3 @@
     })
 })()
 
-document.addEventListener("DOMContentLoaded", ()=> {
-
-    // document.getElementById('ingresar').addEventListener('click', ()=> {
-    //     enviar()
-    // })
-
-})

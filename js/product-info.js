@@ -91,12 +91,21 @@ function mostrarComentarios(array) {
     for (let i = 0; i < array.length; i++) {
         coments = array[i];
         comentarios += `
-        <div class="coments">
-            <div>
-                ${coments.user} ${coments.dateTime} <div id="score">${puntaje(coments.score)}</div>
-                ${coments.description}
+        <div class= "card p-3 bg-white col-md-4 w-auto h-auto">
+            <div class="d-flex flex-start align-items-center">
+                <div class="user d-flex flex-row align-items-center">
+                    <span><medium class="font-weight-bold text-primary">${coments.user}</medium> 
+                    <p class="font-weight-bold">${coments.description}</p></span>
+                </div>
+            </div>
+            <div class="action d-flex justify-content-between  align-items-center">
+                ${coments.dateTime}
+            </div>
+            <div class="icons position-absolute bottom-0 end-0">
+                ${puntaje(coments.score)}
             </div>
         </div>`
+
     }
     document.getElementById('comentarios').innerHTML += comentarios;
 }
