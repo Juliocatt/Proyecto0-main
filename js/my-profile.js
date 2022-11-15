@@ -56,7 +56,7 @@ function obtenerDatos(){
     document.getElementById('telefono').value = obtenido.telefono;
     document.getElementById('emailFoto').src = obtenido.imagen;
   }else{
-    document.getElementById('emailFoto').src = "/img/perfil.png"
+    document.getElementById('emailFoto').src = "img/perfil.png"
   }
 
   if (sessionStorage.name == null){
@@ -65,7 +65,7 @@ function obtenerDatos(){
     document.getElementById('apellidoPerfil').value = "";
     document.getElementById('segApellido').value = "";
     document.getElementById('telefono').value = "";
-    document.getElementById('emailFoto').src = "/img/perfil.png"
+    document.getElementById('emailFoto').src = "img/perfil.png"
   }
 
 }
